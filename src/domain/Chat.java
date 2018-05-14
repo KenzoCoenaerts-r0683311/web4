@@ -7,7 +7,9 @@ import java.util.List;
 public class Chat {
     private List<List<String>> messages = new ArrayList<>();
 
-    public Chat() {}
+    public Chat(String p1, String p2) {
+
+    }
 
     public void addMessage(Person p, String message){
         List<String> u = new ArrayList<>();

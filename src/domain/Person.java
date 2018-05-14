@@ -45,16 +45,14 @@ public class Person {
 	public Person() {}
 
 	public void addFriend(Person p){
-	    if( friendsList.isEmpty() )
+	    friendsList.add(p);
+
+		/*if( friendsList.isEmpty() )
 	        friendsList.add(p);
 
 	    for(Person p2: friendsList)
             if (!p2.userId.equals(p.userId))
-                friendsList.add(p);
-    }
-
-    public void removeFriend(Person p){
-	    friendsList.remove(p);
+                friendsList.add(p);*/
     }
 
     public List<Person> getFriendList(){

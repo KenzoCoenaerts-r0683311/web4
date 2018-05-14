@@ -10,17 +10,17 @@ public class PersonService {
 	private PersonRepository personRepository = new PersonRepositoryStub();
 	private Chat chatApp = new Chat();
 
-	public void addMessage(Person p, String messages){
-		chatApp.addMessage(p, messages);
+	public void addMessage(String p1, String p2, String messages){
+		chatApp.addMessage(p1, p2, messages);
 	}
 
-	public List<List<String>> getMessages() {
-		return chatApp.getMessages();
+	public List<String> getMessages(String p1, String p2) {
+		return chatApp.getMessages(p1, p2);
 	}
 
 	public PersonService(){
 	}
-	
+
 	public Person getPerson(String personId)  {
 		return getPersonRepository().get(personId);
 	}
@@ -52,4 +52,6 @@ public class PersonService {
 	public boolean personExsits(String personId){
 		return getPersonRepository().personExsits(personId);
 	};
+
+
 }

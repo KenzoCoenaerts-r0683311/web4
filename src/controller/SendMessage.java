@@ -14,8 +14,10 @@ public class SendMessage extends RequestHandler implements AsynchronousRequest {
         String message = request.getParameter("message");
         HttpSession session = request.getSession();
         Person p = (Person) session.getAttribute("user");
+        String p1 = p.getUserId();
+        String p2 = request.getParameter("id");
         PersonService service = super.getPersonService();
-        service.addMessage(p, message);
+        service.addMessage(p1, p2, message);
         return "";
     }
 }

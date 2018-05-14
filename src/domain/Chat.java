@@ -1,24 +1,38 @@
 package domain;
 
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Chat {
-    private List<List<String>> messages = new ArrayList<>();
+    private Map<String, List<String>> DB = new HashMap<>();
+    private List<String> messages;
 
-    public Chat(String p1, String p2) {
+    public Chat() {}
 
+    public void addMessage(String p1, String p2, String message){
+        if (DB.containsKey(p1 + p2)) {
+            DB.put(p1 + p2, this.getMessages(p1, p2));
+            this.getMessages(p1, p2).add(p1 + ": " + message);
+        } else if(DB.containsKey(p2 + p1)) {
+            DB.put(p2 + p1, this.getMessages(p1, p2));
+            this.getMessages(p1, p2).add(p1 + ": " + message);
+        } else {
+            messages = new ArrayList<>();
+            DB.put(p1+p2, messages);
+            messages.add(p1 + ": " + message);
+        }
     }
 
-    public void addMessage(Person p, String message){
-        List<String> u = new ArrayList<>();
-        u.add(p.getUserId());
-        u.add(message);
-        messages.add(u);
-    }
+    public List<String> getMessages(String p1, String p2) {
+        if (DB.containsKey(p1 + p2)) {
+            return DB.get(p1 + p2);
+        }
+        else if(DB.containsKey(p2 + p1)) {
+            return DB.get(p2 + p1);
+        }
 
-    public List<List<String>> getMessages() {
-        return this.messages;
+        return new ArrayList<>();
     }
 }

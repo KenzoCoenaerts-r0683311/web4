@@ -24,6 +24,7 @@
             </p>
             <table id="table"></table>
         </main>
+
         <script>
             let xhr = new XMLHttpRequest();
             let xhr2 = new XMLHttpRequest();
@@ -80,7 +81,7 @@
                         table.appendChild(tr);
                     }
 
-                    setTimeout("asyncMethod(xhr, 'GET', 'Controller?action=ShowFriends', getData)", 1000);
+                    //setTimeout("asyncMethod(xhr, 'GET', 'Controller?action=ShowFriends', getData)", 1000);
                 }
             }
 

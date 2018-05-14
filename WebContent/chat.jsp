@@ -28,10 +28,10 @@
             url: "Controller?action=ShowFriends",
             dataType: "json",
             success: json => {
-                $(json).each((index, friend) =>{
+                $(json).each((index, friend) => {
                     $("#friends")
                         .append($("<li onclick=openchat(" + JSON.stringify(friend.userId) + ")/>")
-                        .text("show: " + JSON.stringify( friend.userId )));
+                            .text("show: " + JSON.stringify(friend.userId)));
                 })
             },
             error: () => {
@@ -42,11 +42,11 @@
 
     function openchat(id) {
         $("#chats").append("<div class='chatScreen'>" +
-                            "<p>" + id + "<p>" +
-                            "<div id=messages"+id+"></div>" +
-                            "<input id=message"+id+">" +
-                            "<button onclick=sendMessage("+JSON.stringify(id)+")></button>"+
-                           "</div>");
+            "<p>" + id + "<p>" +
+            "<div id=messages" + id + "></div>" +
+            "<input id=message" + id + ">" +
+            "<button onclick=sendMessage(" + JSON.stringify(id) + ")></button>" +
+            "</div>");
 
         getMessages(id);
     }
@@ -57,28 +57,27 @@
                 id: id,
                 message: document.getElementById("message" + id).value
             },
-            function(data, status){
+            function (data, status) {
                 alert("okay")
-        });
+            });
 
         getMessages(id)
     }
 
     function getMessages(id) {
-        document.getElementById("messages" + id).innerHTML = "";
         $.ajax({
             type: "GET",
-            url: "Controller?action=GetMessages",
+            url: "Controller?action=GetMessages&id=" + id,
             dataType: "json",
 
-            success: json => {
-                $(json).each((index, message) => {
-                    document.getElementById("messages" + id).append(message[0] + ": " + message[1] + "\n")
-                })
+            success: response => {
+                response.map((message) => {
+                    document.getElementById("messages" + id).append(message + "\n")
+                });
             }, error: () => {
                 console.log("nope")
             }
-        })
+        });
     }
 </script>
 </body>

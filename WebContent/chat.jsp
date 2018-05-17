@@ -81,6 +81,10 @@
             }
         });
     }
+
+    function nothing() {
+
+    }
 </script>
 </body>
 </html>

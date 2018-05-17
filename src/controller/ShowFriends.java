@@ -15,7 +15,6 @@ public class ShowFriends extends RequestHandler implements AsynchronousRequest {
         ObjectMapper mapper = new ObjectMapper();
         HttpSession session = request.getSession();
         Person p = (Person) session.getAttribute("user");
-
         if (p != null) {
             List<Person> friends = p.getFriendList();
             return mapper.writeValueAsString(friends);

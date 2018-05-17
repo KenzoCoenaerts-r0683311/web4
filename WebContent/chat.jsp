@@ -58,10 +58,8 @@
                 message: document.getElementById("message" + id).value
             },
             function (data, status) {
-                alert("okay")
+                //alert("test")
             });
-
-        getMessages(id)
     }
 
     function getMessages(id) {
@@ -71,9 +69,13 @@
             dataType: "json",
 
             success: response => {
+                document.getElementById("messages" + id).innerHTML = "";
+
                 response.map((message) => {
-                    document.getElementById("messages" + id).append(message + "\n")
+                    document.getElementById("messages" + id).append(message + "\n");
                 });
+
+                setTimeout(getMessages(id), 2000)
             }, error: () => {
                 console.log("nope")
             }

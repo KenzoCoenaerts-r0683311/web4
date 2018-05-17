@@ -13,8 +13,8 @@ import domain.PersonService;
 public class LogIn extends RequestHandler {
 
 	@Override
-	public String handleRequest(HttpServletRequest request,
-			HttpServletResponse response) {
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("login is called");
 		String destination = "index.jsp";
 		List<String> errors = new ArrayList<String>();
 		

@@ -23,6 +23,7 @@ public class Person {
 	private String lastName;
 	private String state = "offline";
 	private Role role;
+	@JsonIgnore
 	private List<Person> friendsList = new ArrayList<>();
 
 	public Person(String userId, String password, String firstName, String lastName,Role role) {
@@ -44,17 +45,18 @@ public class Person {
 
 	public Person() {}
 
+	@JsonIgnore
 	public void addFriend(Person p){
-	    friendsList.add(p);
-
-		/*if( friendsList.isEmpty() )
+	    //friendsList.add(p);
+		if( friendsList.isEmpty() )
 	        friendsList.add(p);
 
 	    for(Person p2: friendsList)
             if (!p2.userId.equals(p.userId))
-                friendsList.add(p);*/
+                friendsList.add(p);
     }
 
+	@JsonIgnore
     public List<Person> getFriendList(){
 	    return friendsList;
     }

@@ -15,12 +15,12 @@
     <jsp:param name="title" value="Home"/>
 </jsp:include>
 <form method="POST" action="Controller?action=Register">
-    <label for="naam">naam: <input id="naam" type="text"></label>
-    <label for="voornaam">voornaam: <input id="voornaam" type="text"></label>
-    <label for="email">email: <input id="email" type="text"></label>
-    <label for="geslacht">geslacht: <input id="geslacht" type="text"></label>
-    <label for="wachtwoord">wachtwoord: <input id="wachtwoord" type="text"></label>
-    <label>herhaal wachtwoord: <input type="text"></label>
+    <label for="name"><input id="name" name="name"></label>
+    <label for="firstName"><input id="firstName" name="firstName"></label>
+    <label for="email"><input id="email" name="email"></label>
+    <label for="password"><input id="password" name="password"></label>
+    <label lang="repeatPassword"><input id="repeatPassword" name="resetPassword"></label>
+    <input type="submit" value="Register">
 </form>
 </body>
 </html>

@@ -3,9 +3,15 @@ package controller;
 import domain.DomainException;
 import domain.Person;
 import domain.PersonService;
+import domain.Role;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class Register extends RequestHandler{
@@ -13,23 +19,19 @@ public class Register extends RequestHandler{
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         Person p = new Person();
         ArrayList<String> errors = new ArrayList<>();
-        String naam = request.getParameter("naam");
-        String voornaam = request.getParameter("voornaam");
+        String name = request.getParameter("name");
+        String firstName = request.getParameter("firstName");
         String email = request.getParameter("email");
-        String geslacht = request.getParameter("geslacht");
         String password = request.getParameter("password");
-        String passwordConfirmed = request.getParameter("passwordConfirmed");
-        int age = Integer.parseInt(request.getParameter("age"));
-
 
         try {
-            p.setLastName(naam);
+            p.setLastName(name);
         } catch(DomainException e) {
             errors.add(e.getMessage());
         }
 
         try {
-            p.setFirstName(voornaam);
+            p.setFirstName(firstName);
         } catch(DomainException e) {
             errors.add(e.getMessage());
         }
@@ -41,8 +43,14 @@ public class Register extends RequestHandler{
         }
 
         try {
-            p.setPassword(password);
+            p.setHashedPassword(password);
         } catch(DomainException e) {
+            errors.add(e.getMessage());
+        }
+
+        try {
+            p.setRole(Role.LID);
+        } catch (DomainException e){
             errors.add(e.getMessage());
         }
 
@@ -51,6 +59,7 @@ public class Register extends RequestHandler{
 
         PersonService personService = super.getPersonService();
         personService.addPerson(p);
+        System.out.println(personService.getPersons());
         return "index.jsp";
     }
 }

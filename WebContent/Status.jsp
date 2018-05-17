@@ -81,7 +81,7 @@
                         table.appendChild(tr);
                     }
 
-                    //setTimeout("asyncMethod(xhr, 'GET', 'Controller?action=ShowFriends', getData)", 1000);
+                    setTimeout("asyncMethod(xhr, 'GET', 'Controller?action=ShowFriends', getData)", 1000);
                 }
             }
 

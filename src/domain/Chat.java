@@ -7,7 +7,6 @@ import java.util.Map;
 
 public class Chat {
     private Map<String, List<String>> DB = new HashMap<>();
-    private List<String> messages;
 
     public Chat() {}
 
@@ -19,9 +18,9 @@ public class Chat {
             DB.put(p2 + p1, this.getMessages(p1, p2));
             this.getMessages(p1, p2).add(p1 + ": " + message);
         } else {
-            messages = new ArrayList<>();
-            DB.put(p1+p2, messages);
+            List<String> messages = new ArrayList<>();
             messages.add(p1 + ": " + message);
+            DB.put(p1+p2, messages);
         }
     }
 

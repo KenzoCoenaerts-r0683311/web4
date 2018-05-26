@@ -20,7 +20,7 @@
 </main>
 <jsp:include page="footer.jsp">
     <jsp:param name="title" value="Home"/>
-</jsp:include>
+</jsp:include>+
 <script>
     $(() => {
         $.ajax({

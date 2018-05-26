@@ -55,6 +55,7 @@ public class Controller extends HttpServlet {
         }
         if(handler != null && handler instanceof AsynchronousRequest) {
             response.setContentType("application/json");
+            response.setHeader("Access-Control-Allow-Origin", "*");
             response.getWriter().write(destination);
         }
         else {

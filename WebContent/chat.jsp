@@ -15,13 +15,16 @@
     <jsp:param name="title" value="Home"/>
 </jsp:include>
 <main>
+    <button id="toggle" onclick="hideFriends()">hide</button>
     <ul id="friends"></ul>
     <div id="chats"></div>
 </main>
 <jsp:include page="footer.jsp">
     <jsp:param name="title" value="Home"/>
-</jsp:include>+
+</jsp:include>
 <script>
+    let showFriends = true;
+
     $(() => {
         $.ajax({
             type: "GET",
@@ -41,8 +44,8 @@
     });
 
     function openchat(id) {
-        $("#chats").append("<div class='chatScreen'>" +
-            "<p>" + id + "<p>" +
+        $("#chats").append("<div id="+id+" class='chatScreen'>" +
+            "<p onclick=closeChat("+ JSON.stringify(id) +")>" + id + "<p>" +
             "<div id=messages" + id + "></div>" +
             "<input id=message" + id + ">" +
             "<button onclick=sendMessage(" + JSON.stringify(id) + ")></button>" +
@@ -82,8 +85,29 @@
         });
     }
 
-    function nothing() {
+    function closeChat(id) {
+        document.getElementById(id).remove();
+    }
 
+    function hideFriends(){
+        if(showFriends) {
+            $('ul#friends').slideUp();
+            $('ul#friends > li').click(function () {
+                $(this).next('ul').slideToggle();
+
+            });
+
+            $('#toggle').html("show");
+            showFriends = false;
+        } else {
+            $('ul#friends').slideDown();
+            $('ul#friends > li').click(function () {
+                $(this).next('ul').slideToggle();
+            });
+
+            $('#toggle').html("hide");
+            showFriends = true;
+        }
     }
 </script>
 </body>

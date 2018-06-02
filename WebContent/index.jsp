@@ -121,8 +121,7 @@
         text.value = "";
     }
 
-    window.onunload = () => webSocket.close();
-
+    //window.onunload = () => webSocket.close();
 </script>
 </body>
 </html>

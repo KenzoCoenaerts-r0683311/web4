@@ -11,6 +11,7 @@
                     <li><a href="Controller?action=StatusPage">Status</a></li>
                     <li><a href="Controller?action=ChatPage">Chat</a></li>
                     <li><a href="Controller?action=RegistrationPage">Registration</a></li>
+                    <li><a href="Controller?action=WkResultaatPage">WK resultaat</a></li>
                 </c:when>
                 <c:otherwise>
                     <li><a href="Controller">Home</a></li>

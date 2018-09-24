@@ -15,11 +15,11 @@
     <jsp:param name="title" value="Home"/>
 </jsp:include>
 <form method="POST" action="Controller?action=Register">
-    <label for="name"><input id="name" name="name"></label>
-    <label for="firstName"><input id="firstName" name="firstName"></label>
-    <label for="email"><input id="email" name="email"></label>
-    <label for="password"><input id="password" name="password"></label>
-    <label lang="repeatPassword"><input id="repeatPassword" name="resetPassword"></label>
+    <p>last name: <input id="name" name="name"></p>
+    <p>first name: <input id="firstName" name="firstName"></p>
+    <p>email: <input id="email" name="email"></p>
+    <p>password: <input type="password" id="password" name="password"></p>
+    <p>repeat password: <input type="password" id="repeatPassword" name="resetPassword"></p>
     <input type="submit" value="Register">
 </form>
 </body>

@@ -4,11 +4,13 @@ import java.util.List;
 
 import db.PersonRepository;
 import db.PersonRepositoryStub;
+import db.WkDB;
 
 
 public class PersonService {
 	private PersonRepository personRepository = new PersonRepositoryStub();
 	private Chat chatApp = new Chat();
+	private WkDB wkDB = new WkDB();
 
 	public void addMessage(String p1, String p2, String messages){
 		chatApp.addMessage(p1, p2, messages);
@@ -53,5 +55,12 @@ public class PersonService {
 		return getPersonRepository().personExsits(personId);
 	};
 
+	public void addWkResultaten(WkResultaat resultaat){
+		wkDB.addResultaat(resultaat);
+	}
+
+	public List<WkResultaat> getWkResultaten(){
+		return wkDB.getResultaten();
+	}
 
 }
